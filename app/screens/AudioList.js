@@ -5,7 +5,6 @@ import { RecyclerListView, LayoutProvider } from 'recyclerlistview';
 import AudioListItem from '../components/AudioListItem';
 import Header from '../components/Header';
 import Screen from '../components/Screen';
-import { trendingData,showsData, mixData, cardData } from "../data/Data";
 import OptionModal from '../components/OptionModal';
 import { Audio } from 'expo-av';
 import {

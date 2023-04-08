@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import color from '../misc/color';
-import { cardData } from '../data/Data';
 import musicimg from '../../assets/apple-music-note.png';
 
 
