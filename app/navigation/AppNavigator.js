@@ -42,7 +42,7 @@ const AppNavigator = () => {
         }}
       />
       <Tab.Screen
-        name='PlayList'
+        name='Profile'
         component={PlayListScreen}
         options={{
           tabBarIcon: ({ color, size }) => (

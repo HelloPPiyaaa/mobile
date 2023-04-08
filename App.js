@@ -6,6 +6,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import AudioList from './app/screens/AudioList';
 import AudioProvider from './app/context/AudioProvider';
 import AppNavigator from './app/navigation/AppNavigator';
+
+
+
 // const MyTheme = {
 //   ...DefaultTheme,
 //   colors: {
