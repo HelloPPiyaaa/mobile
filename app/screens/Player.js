@@ -170,6 +170,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingBottom: 20,
         
+        
     },
     audioCountContainer: {
         flexDirection: 'row',
@@ -179,6 +180,7 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
+       
     },
     audioCount: {
         textAlign: 'right',

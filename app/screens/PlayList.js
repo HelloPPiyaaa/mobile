@@ -13,6 +13,7 @@ import PlayListInputModal from '../components/PlayListInputModal';
 import { AudioContext } from '../context/AudioProvider';
 import color from '../misc/color';
 import PlayListDetail from '../components/PlayListDetail';
+import { Button } from 'react-native-paper';
 
 let selectedPlayList = {};
 const PlayList = ({ navigation }) => {
@@ -153,17 +154,36 @@ const PlayList = ({ navigation }) => {
         playList={selectedPlayList}
         onClose={() => setShowPlayList(false)}
       />
+
+      
+      <Button style={styles.Buttonlogout} icon="logout" mode="contained" onPress={() => getAuth().signOut()} >Log Out</Button>
+
+
+
+    
+
     </ScrollView>
+    
+   
+    
   );
+
+  
+ 
+ 
+  
+
 };
+
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    padding: 30,
+    backgroundColor:"black",
   },
   playListBanner: {
     padding: 5,
-    backgroundColor: 'rgba(204,204,204,0.3)',
+    backgroundColor: 'white',
     borderRadius: 5,
     marginBottom: 15,
   },
@@ -171,6 +191,7 @@ const styles = StyleSheet.create({
     marginTop: 3,
     opacity: 0.5,
     fontSize: 14,
+    color:"blue",
   },
   playListBtn: {
     color: color.ACTIVE_BG,
@@ -179,6 +200,14 @@ const styles = StyleSheet.create({
     fontSize: 14,
     padding: 5,
   },
+  Buttonlogout:{
+    backgroundColor: "red",
+    marginTop:380,
+    
+    
+
+  }
+
 });
 
 export default PlayList;

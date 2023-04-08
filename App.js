@@ -69,20 +69,23 @@ export default function App() {
 
   return (
     <PaperProvider>
+       
+  
+        <StatusBar backgroundColor="rgba(0,0,0,0.5)" style="light" />
       <AudioProvider>
       <NavigationContainer >
         <AppNavigator />
       </NavigationContainer>
     </AudioProvider>
-    <ScrollView>
-        </ScrollView>
-        <Button icon="logout" mode="contained" onPress={() => getAuth().signOut()}>
+     
+    {/* <Button icon="logout" mode="contained" onPress={() => getAuth().signOut()}>
           Sign Out
         </Button>
-        <Button icon="logout" mode="contained" onPress={() => addItem(corona.length)}>
-          Add
-        </Button>
+  
         <StatusBar backgroundColor="rgba(0,0,0,0.5)" style="light" />
+  */}
+       
+       
     </PaperProvider>
     
 

@@ -29,16 +29,19 @@ export default function LoginScreen() {
 
 
   return (
-    <View style={{ padding: 20, marginTop: 50 }}>
+
+    <View style={{ width: '100%', height: '100%',backgroundColor:"#1E1E1E" ,padding:20 , marginTop:0 }}>
+
+      <Text style={{textAlign:'center', fontSize:40 , color:"white", marginBottom:70, marginTop:30}}>MUSIC EIEI</Text>
       <FirebaseRecaptchaVerifierModal
         ref={recaptchaVerifier}
         firebaseConfig={app.options}
         // attemptInvisibleVerification
       />
-      <Text style={{ marginTop: 20 }}>ใส่หมายเลขโทรศัพท์</Text>
+      <Text style={{ marginTop: 20 , color:"white"}}>กรอกหมายเลขโทรศัพท์</Text>
       <TextInput
-        style={{ marginVertical: 10, fontSize: 17 }}
-        placeholder="+66 999 999 9999"
+        style={{ marginVertical: 6, fontSize: 17 ,borderRadius: 10 ,padding:5 , backgroundColor:"#1E1E1E" , borderColor:"white" , borderWidth:0.5 ,marginBottom:20}}
+        placeholder="+66 999 999 9999" 
         autoFocus
         autoCompleteType="tel"
         keyboardType="phone-pad"
@@ -67,14 +70,16 @@ export default function LoginScreen() {
           }
         }}
       />
-      <Text style={{ marginTop: 20 }}>Enter Verification code</Text>
+      <Text style={{ marginTop: 20,color:"white" }}>กรอกหมายเลข OTP</Text>
       <TextInput
-        style={{ marginVertical: 10, fontSize: 17 }}
+        style={{ marginVertical: 15, fontSize: 17 ,borderRadius: 10 ,padding:5 , backgroundColor:"#1E1E1E" , borderColor:"white" , borderWidth:0.5 ,marginBottom:20}}
         editable={!!verificationId}
-        placeholder="123456"
+        placeholder="1234"
         onChangeText={setVerificationCode}
       />
-      <Button
+
+
+      <Button 
         title="Confirm Verification Code"
         disabled={!verificationId}
         onPress={async () => {
@@ -107,10 +112,17 @@ export default function LoginScreen() {
             {message.text}
           </Text>
         </TouchableOpacity>
+        
       ) : (
         undefined
       )}
       {attemptInvisibleVerification && <FirebaseRecaptchaBanner />}
     </View>
+    
   );
+
+  
 }
+
+
+
