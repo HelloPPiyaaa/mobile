@@ -127,7 +127,8 @@ const PlayList = ({ navigation }) => {
               style={styles.playListBanner}
               onPress={() => handleBannerPress(item)}
             >
-              <Text>{item.title}</Text>
+              <Text style={styles.audioTitle}>
+                {item.title}</Text>
               <Text style={styles.audioCount}>
                 {item.audios.length > 1
                   ? `${item.audios.length} Songs`
@@ -179,19 +180,19 @@ const PlayList = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 30,
-    backgroundColor:"black",
+    backgroundColor:"white",
   },
   playListBanner: {
     padding: 5,
-    backgroundColor: 'white',
+    backgroundColor: 'black',
     borderRadius: 5,
     marginBottom: 15,
   },
   audioCount: {
     marginTop: 3,
-    opacity: 0.5,
+    opacity: 0.7,
     fontSize: 14,
-    color:"blue",
+    color:"white",
   },
   playListBtn: {
     color: color.ACTIVE_BG,
@@ -203,10 +204,15 @@ const styles = StyleSheet.create({
   Buttonlogout:{
     backgroundColor: "red",
     marginTop:380,
-    
-    
+  },
 
-  }
+  audioTitle:{
+    color:"white",
+    fontSize:20,
+    marginBottom:10,
+  },
+ 
+  
 
 });
 

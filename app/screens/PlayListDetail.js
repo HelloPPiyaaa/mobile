@@ -15,6 +15,9 @@ import { AudioContext } from '../context/AudioProvider';
 import OptionModal from '../components/OptionModal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
+  
+
 const PlayListDetail = props => {
   const context = useContext(AudioContext);
   const playList = props.route.params;

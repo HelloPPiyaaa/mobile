@@ -23,8 +23,8 @@ const PlayListScreen = () => {
 const AppNavigator = () => {
   return (
     
-    <Tab.Navigator>
-      <Tab.Screen
+    <Tab.Navigator >
+      <Tab.Screen 
         name='Music'
         component={AudioList}
         options={{

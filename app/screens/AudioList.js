@@ -59,7 +59,8 @@ export class AudioList extends Component {
   rowRenderer = (type, item, index, extendedState) => {
     return (
       
-      <AudioListItem
+      
+      <AudioListItem 
         title={item.filename} //filename
         isPlaying={extendedState.isPlaying}
         activeListItem={this.context.currentAudioIndex === index}
@@ -120,7 +121,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    
+ 
   },
 });
 

@@ -38,9 +38,9 @@ export default function LoginScreen() {
         firebaseConfig={app.options}
         // attemptInvisibleVerification
       />
-      <Text style={{ marginTop: 20 , color:"white"}}>กรอกหมายเลขโทรศัพท์</Text>
+      <Text style={{ marginTop: 20 , color:"white",marginBottom:10}}>กรอกหมายเลขโทรศัพท์</Text>
       <TextInput
-        style={{ marginVertical: 6, fontSize: 17 ,borderRadius: 10 ,padding:5 , backgroundColor:"#1E1E1E" , borderColor:"white" , borderWidth:0.5 ,marginBottom:20}}
+        style={{ marginVertical: 6, fontSize: 17 ,borderRadius: 10 ,padding:5 , backgroundColor:"white" , borderColor:"white" , borderWidth:0.5 ,marginBottom:20}}
         placeholder="+66 999 999 9999" 
         autoFocus
         autoCompleteType="tel"
@@ -72,13 +72,13 @@ export default function LoginScreen() {
       />
       <Text style={{ marginTop: 20,color:"white" }}>กรอกหมายเลข OTP</Text>
       <TextInput
-        style={{ marginVertical: 15, fontSize: 17 ,borderRadius: 10 ,padding:5 , backgroundColor:"#1E1E1E" , borderColor:"white" , borderWidth:0.5 ,marginBottom:20}}
+        style={{ marginVertical: 15, fontSize: 17 ,borderRadius: 10 ,padding:5 , backgroundColor:"white" , borderColor:"white" , borderWidth:0.5 ,marginBottom:20}}
         editable={!!verificationId}
-        placeholder="1234"
+        placeholder=""
         onChangeText={setVerificationCode}
       />
 
-
+        
       <Button 
         title="Confirm Verification Code"
         disabled={!verificationId}
