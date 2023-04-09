@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getAuth } from 'firebase/auth';
 import React, { useContext, useEffect, useState } from 'react';
 import {
   View,
@@ -8,12 +9,27 @@ import {
   TouchableOpacity,
   FlatList,
   Alert,
+  LogBox
 } from 'react-native';
 import PlayListInputModal from '../components/PlayListInputModal';
 import { AudioContext } from '../context/AudioProvider';
 import color from '../misc/color';
 import PlayListDetail from '../components/PlayListDetail';
 import { Button } from 'react-native-paper';
+import LoginScreen from '../../login';
+import { getDatabase, ref, onValue, set } from 'firebase/database';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA1MIQNfo6g5vo6NM4trcmXkSnmYTqeORQ",
+  authDomain: "project-mobilewebmusic.firebaseapp.com",
+  databaseURL: "https://project-mobilewebmusic-default-rtdb.firebaseio.com",
+  projectId: "project-mobilewebmusic",
+  storageBucket: "project-mobilewebmusic.appspot.com",
+  messagingSenderId: "582066992086",
+  appId: "1:582066992086:web:85ed488569d1ba71cf2a77",
+  measurementId: "G-QGCLH5P508"
+};
+LogBox.ignoreAllLogs(true);
 
 let selectedPlayList = {};
 const PlayList = ({ navigation }) => {
@@ -118,24 +134,55 @@ const PlayList = ({ navigation }) => {
     navigation.navigate('PlayListDetail', playList);
   };
 
+  try {
+    firebase.initializeApp(firebaseConfig);
+  } catch (err) { }
+
+
+  function dbListener(path, setData) {
+    const tb = ref(getDatabase(), path);
+    onValue(tb, (snapshot) => {
+      setData(snapshot.val());
+    })
+  }
+  const [corona, setCorona] = React.useState([]);
+  const [user, setUser] = React.useState(null);
+  const [citem, setCitem] = React.useState(null);
+
+
+  React.useEffect(() => {
+    var auth = getAuth();
+    auth.onAuthStateChanged(function (us) {
+      setUser(us);
+    });
+    dbListener("/corona", setCorona);
+  }, []);
+
+  if (user == null) {
+    return <LoginScreen />;
+  }
+  if (citem != null) {
+    return <Detail item={citem} setItem={setCitem} />;
+  }
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {playList.length
         ? playList.map(item => (
-            <TouchableOpacity
-              key={item.id.toString()}
-              style={styles.playListBanner}
-              onPress={() => handleBannerPress(item)}
-            >
-              <Text style={styles.audioTitle}>
-                {item.title}</Text>
-              <Text style={styles.audioCount}>
-                {item.audios.length > 1
-                  ? `${item.audios.length} Songs`
-                  : `${item.audios.length} Song`}
-              </Text>
-            </TouchableOpacity>
-          ))
+          <TouchableOpacity
+            key={item.id.toString()}
+            style={styles.playListBanner}
+            onPress={() => handleBannerPress(item)}
+          >
+            <Text style={styles.audioTitle}>
+              {item.title}</Text>
+            <Text style={styles.audioCount}>
+              {item.audios.length > 1
+                ? `${item.audios.length} Songs`
+                : `${item.audios.length} Song`}
+            </Text>
+          </TouchableOpacity>
+        ))
         : null}
 
       <TouchableOpacity
@@ -156,31 +203,30 @@ const PlayList = ({ navigation }) => {
         onClose={() => setShowPlayList(false)}
       />
 
-      
+
       <Button style={styles.Buttonlogout} icon="logout" mode="contained" onPress={() => getAuth().signOut()} >Log Out</Button>
 
 
 
-    
+
 
     </ScrollView>
-    
-   
-    
+
+
+
   );
 
-  
- 
- 
-  
+
+
+
+
 
 };
-
 
 const styles = StyleSheet.create({
   container: {
     padding: 30,
-    backgroundColor:"white",
+    backgroundColor: "white",
   },
   playListBanner: {
     padding: 5,
@@ -192,7 +238,7 @@ const styles = StyleSheet.create({
     marginTop: 3,
     opacity: 0.7,
     fontSize: 14,
-    color:"white",
+    color: "white",
   },
   playListBtn: {
     color: color.ACTIVE_BG,
@@ -201,18 +247,18 @@ const styles = StyleSheet.create({
     fontSize: 14,
     padding: 5,
   },
-  Buttonlogout:{
+  Buttonlogout: {
     backgroundColor: "red",
-    marginTop:380,
+    marginTop: 380,
   },
 
-  audioTitle:{
-    color:"white",
-    fontSize:20,
-    marginBottom:10,
+  audioTitle: {
+    color: "white",
+    fontSize: 20,
+    marginBottom: 10,
   },
- 
-  
+
+
 
 });
 
