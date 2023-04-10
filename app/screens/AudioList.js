@@ -3,7 +3,6 @@ import { Text, View, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import { AudioContext } from '../context/AudioProvider';
 import { RecyclerListView, LayoutProvider } from 'recyclerlistview';
 import AudioListItem from '../components/AudioListItem';
-import Header from '../components/Header';
 import Screen from '../components/Screen';
 import OptionModal from '../components/OptionModal';
 import { Audio } from 'expo-av';
